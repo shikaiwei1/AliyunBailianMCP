@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 ```bash
 # 清理之前的构建文件
-rm -rf dist/ build/ *.egg-info/
+rm -rf dist/ build/ src/*.egg-info/
 
 # 构建包
 python -m build

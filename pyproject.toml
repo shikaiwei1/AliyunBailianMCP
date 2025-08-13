@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp-server-bailian-video-synthesis"
-version = "1.0.1"
+version = "1.0.2"
 description = "阿里云百炼-通义万相视频编辑统一模型MCP服务器"
 readme = "README.md"
 requires-python = ">=3.8"
