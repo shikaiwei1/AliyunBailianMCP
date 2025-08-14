@@ -17,7 +17,7 @@ Author: John Chen
 
 from .server import BailianVideoSynthesisServer, main
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __author__ = "John Chen"
 __email__ = "john.chen@example.com"
 __description__ = "阿里云百炼-通义万相视频编辑统一模型MCP服务器"

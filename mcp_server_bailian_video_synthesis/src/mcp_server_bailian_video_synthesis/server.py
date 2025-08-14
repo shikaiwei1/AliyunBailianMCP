@@ -27,8 +27,6 @@ from mcp.server.models import InitializationOptions
 from mcp.server.stdio import stdio_server
 from mcp.server.lowlevel import NotificationOptions
 from mcp.types import (
-    CallToolResult,
-    TextContent,
     Tool,
 )
 
@@ -235,39 +233,24 @@ class BailianVideoSynthesisServer:
             ]
 
         @self.server.call_tool()
-        async def call_tool(name: str, arguments: Dict[str, Any]) -> CallToolResult:
+        async def call_tool(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
             """
             调用指定的工具
             """
-            try:
-                if name == "create_task_image_reference":
-                    result = await self._create_task_image_reference(**arguments)
-                elif name == "create_task_video_repainting":
-                    result = await self._create_task_video_repainting(**arguments)
-                elif name == "create_task_video_edit":
-                    result = await self._create_task_video_edit(**arguments)
-                elif name == "create_task_video_extension":
-                    result = await self._create_task_video_extension(**arguments)
-                elif name == "create_task_video_expansion":
-                    result = await self._create_task_video_expansion(**arguments)
-                elif name == "get_task_result":
-                    result = await self._get_task_result(**arguments)
-                else:
-                    raise ValueError(f"未知的工具名称: {name}")
-
-                return CallToolResult(
-                    content=[
-                        TextContent(
-                            type="text",
-                            text=json.dumps(result, ensure_ascii=False, indent=2),
-                        )
-                    ]
-                )
-            except Exception as e:
-                return CallToolResult(
-                    content=[TextContent(type="text", text=f"工具调用失败: {str(e)}")],
-                    isError=True,
-                )
+            if name == "create_task_image_reference":
+                return await self._create_task_image_reference(**arguments)
+            elif name == "create_task_video_repainting":
+                return await self._create_task_video_repainting(**arguments)
+            elif name == "create_task_video_edit":
+                return await self._create_task_video_edit(**arguments)
+            elif name == "create_task_video_extension":
+                return await self._create_task_video_extension(**arguments)
+            elif name == "create_task_video_expansion":
+                return await self._create_task_video_expansion(**arguments)
+            elif name == "get_task_result":
+                return await self._get_task_result(**arguments)
+            else:
+                raise ValueError(f"未知的工具名称: {name}")
 
     async def _create_task_image_reference(
         self,
