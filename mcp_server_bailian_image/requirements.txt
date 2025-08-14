@@ -1,0 +1,15 @@
+# MCP Server Bailian Image Dependencies
+
+# Core MCP framework
+mcp>=1.0.0
+
+# Aliyun DashScope SDK for image generation
+dashscope>=1.0.0
+
+# Optional development dependencies
+# Uncomment the following lines for development
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+# black>=23.0.0
+# flake8>=6.0.0
+# mypy>=1.0.0
